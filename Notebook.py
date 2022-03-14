@@ -119,51 +119,7 @@ def edit():
     connection.commit() 
     connection.close()
 def update():
-    up = Tk() 
-    connection = sqlite3.connect("myTable.db") 
-    crsr = connection.cursor() 
-    record_id = deli.get()
-    crsr.execute("SELECT * FROM emp WHERE oid = " + record_id)
-    records = crsr.fetchall()
-    # Create Text Boxes
-    global Staffno_edit
-    Staffno_edit = Entry(up , width = 30)
-    Staffno_edit.grid(row = 0 ,column = 1, padx = 20)
-    global f_name_edit
-    f_name_edit = Entry(up , width = 30)
-    f_name_edit.grid(row = 1 ,column = 1, padx = 20)
-    global l_name_edit
-    l_name_edit = Entry(up , width = 30)
-    l_name_edit.grid(row = 2 ,column = 1, padx = 20)
-    global Gender_edit
-    Gender_edit = Entry(up , width = 30)
-    Gender_edit.grid(row = 3 ,column = 1, padx = 20)
-    global DOJi_edit
-    DOJi_edit = Entry(up , width = 30)
-    DOJi_edit.grid(row = 4 ,column = 1, padx = 20)
-    # Text box for deleting a specific record
-    # Create text box labels
-    Staffno_label = Label(up, text = "Staff Number") 
-    Staffno_label.grid(row = 0 , column =0)
-
-    f_name_label = Label(up, text = "First Name") 
-    f_name_label.grid(row = 1 , column =0)
-
-    l_name_label = Label(up, text = "Last Name") 
-    l_name_label.grid(row = 2 , column =0)
-
-    Gender_label = Label(up, text = "Gender") 
-    Gender_label.grid(row = 3 , column =0)
-
-    DOJi_label = Label(up, text = "Date of Joining") 
-    DOJi_label.grid(row = 4 , column =0)
-     # Loop through results and complete all the fields
-    for record in records:
-        Staffno_edit.insert(0, record[0])
-        f_name_edit.insert(0, record[1])
-        l_name_edit.insert(0,record[2])
-        Gender_edit.insert(0, record[3])
-        DOJi_edit.insert(0, record[4])
+  
     # Button for Submit
     Button(up , text = "Submit Changes" , command = edit).grid(row = 5 , column = 1,pady = 10 , padx = 10)
     # Button for exit
@@ -172,42 +128,6 @@ def update():
     connection.close()
 
 # Create Text Boxes
-Staffno = Entry(root , width = 30)
-Staffno.grid(row = 0 ,column = 1, padx = 20)
-
-f_name = Entry(root , width = 30)
-f_name.grid(row = 1 ,column = 1, padx = 20)
-
-l_name = Entry(root , width = 30)
-l_name.grid(row = 2 ,column = 1, padx = 20)
-
-Gender = Entry(root , width = 30)
-Gender.grid(row = 3 ,column = 1, padx = 20)
-
-DOJi = Entry(root , width = 30)
-DOJi.grid(row = 4 ,column = 1, padx = 20)
-# Text box for deleting a specific record
-deli = Entry(root , width = 30)
-deli.grid(row = 7 , column = 1 , padx = 20)
-
-# Create text box labels
-Staffno_label = Label(root, text = "Staff Number") 
-Staffno_label.grid(row = 0 , column =0)
-
-f_name_label = Label(root, text = "First Name") 
-f_name_label.grid(row = 1 , column =0)
-
-l_name_label = Label(root, text = "Last Name") 
-l_name_label.grid(row = 2 , column =0)
-
-Gender_label = Label(root, text = "Gender") 
-Gender_label.grid(row = 3 , column =0)
-
-DOJi_label = Label(root, text = "Date of Joining") 
-DOJi_label.grid(row = 4 , column =0)
-
-deli_label = Label(root , text = "Enter the ID of person to be selected")
-deli_label.grid(row = 7 , column = 0)
 
 
 # Create a submit button
